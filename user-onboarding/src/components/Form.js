@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import {
+    Container, Row, Card, CardText, CardBody, CardHeader, Col
+  } from 'reactstrap';
+
 
 const UserForm = ({ values, errors, touched, status }) => {
   console.log("values", values);
@@ -62,10 +66,19 @@ const UserForm = ({ values, errors, touched, status }) => {
       </Form>
       {users.map(users => {
         return (
-          <ul key={users.id}>
-            <li>Name: {users.name}</li>
-            <li>Email: {users.email}</li>
-          </ul>
+            <div className='user-list' key={users.id}>
+                <Container>
+                <Row>
+                    <Col>
+                        <Card>
+                            <CardHeader>Name: {users.name}</CardHeader>
+                            <CardBody><CardText>Email: {users.email}</CardText></CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+                </Container>
+
+            </div>
         );
       })}
     </div>
